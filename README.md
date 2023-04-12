@@ -15,4 +15,4 @@ The rest should be self-explanatory, but if not please log a bug on github.
 ## Donations Welcome
 If you find this useful and would like to donate, please send to my Venmo account: @Keldon-Rush
 
-[or https://venmo.com/u/Keldon-Rush](https://venmo.com/u/Keldon-Rush)
+[https://venmo.com/u/Keldon-Rush](https://venmo.com/u/Keldon-Rush)

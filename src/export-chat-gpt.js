@@ -118,7 +118,7 @@ function whenDOMready(func){
 }
 
 function hasConvo() {
-  return !!document.querySelectorAll( '.min-h-\\[20px\\]' );
+  return !!document.querySelector( '.min-h-\\[20px\\]' );
 }
 
 function removeConvoDiv() {
@@ -128,7 +128,7 @@ function removeConvoDiv() {
 }
 
 function getConvo() {
-  if( !hasConvo() ) return alert( 'no messages loaded at this time' );
+  if( !hasConvo() ) return alert( 'no conversation loaded at this time' );
   const msgElements = document.querySelectorAll( '.min-h-\\[20px\\]' );
   const msgs = [];
   for( let i=0; i<msgElements.length; i++ ){
@@ -158,20 +158,20 @@ function getConvo() {
 }
 
 function convoToHTML( msgs ){
-  if( !msgs || !msgs.length ) return alert( 'no convo to convert to string' );
-  let msgString = '';
+  if( !msgs || !msgs.length ) return alert( 'no conversation loaded at this time' );
+  let convo = '';
   for( i=0; i<msgs.length; i++ ){
     if( i%2 === 0 ){
-      msgString += '<p class="who me">me :</p>\n' + '<p class="prompt">' + msgs[ i ] + '</p>\n';
+      convo += '<p class="who me">me :</p>\n' + '<p class="prompt">' + msgs[ i ] + '</p>\n';
     } else {
-      msgString += '<p class="who ai">chatGPT:</p>\n' + '<div class="response">' + msgs[ i ] + '</div>\n';
+      convo += '<p class="who ai">ChatGPT:</p>\n' + '<div class="response">' + msgs[ i ] + '</div>\n';
     }
   }
-  return htmlBlocks[0] + msgString + htmlBlocks[1];
+  return htmlBlocks[0] + convo + htmlBlocks[1];
 }
 
 function convoToJSON( msgs ){
-  if( !msgs || !msgs.length ) return alert( 'no convo to convert to JSON' );
+  if( !msgs || !msgs.length ) return alert( 'no conversation loaded at this time' );
   const convo = msgs.map( (msg, i) => {
     switch( true ){
       case i%2 === 0 : // prompt
