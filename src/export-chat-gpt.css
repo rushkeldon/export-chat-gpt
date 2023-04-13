@@ -1,10 +1,9 @@
-.btn-get-convo {
+.btn1 {
     position : absolute;
     top : 5px;
-    right : 15px;
+    font-family: "Courier New";
     z-index: 5000;
     box-sizing: border-box;
-    font-family: "Courier New";
     font-size: 16px;
     line-height : 10px;
     color: #EFC369;
@@ -19,20 +18,28 @@
     cursor: default;
 }
 
-.btn-get-convo:hover {
+.btn-init {
+    right : 167px;
+}
+
+.btn-get-convo {
+    right : 15px;
+}
+
+.btn1:hover {
     color: #D7925F;
     border: 2px solid #EFC369;
     cursor: pointer;
     background-color: black;
 }
 
-.btn-get-convo:focus {
+.btn1:focus {
     color: #EFC369;
     border: 2px solid #D7925F;
     cursor: default;
 }
 
-.btn-get-convo:active {
+.btn1:active {
     color: yellow;
     border: 2px solid #EFC369;
     cursor: default;

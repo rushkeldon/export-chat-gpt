@@ -190,22 +190,44 @@ function convoToJSON( msgs ){
   return JSON.stringify( convo, null, 2 );
 }
 
-function hasBtn() {
+function hasBtnConvo() {
   return !!document.querySelector( '.btn-get-convo');
 }
 
-function addBtn() {
-  hasBtn() && removeBtn();
+function addBtnConvo() {
+  hasBtnConvo() && removeBtnConvo();
   const btn = document.createElement( 'div' );
   btn.innerHTML = 'export convo';
-  btn.classList.add( 'btn-get-convo' );
+  btn.className = 'btn1 btn-get-convo';
   document.body.appendChild( btn );
   btn.addEventListener( 'click', getConvo );
 }
 
-function removeBtn() {
+function removeBtnConvo() {
   const btn = document.querySelector( '.btn-get-convo');
   btn && btn.parentNode && btn.parentNode.removeChild( btn );
+}
+
+function addBtnInit() {
+  const btn = document.createElement( 'div' );
+  btn.innerHTML = 'init';
+  btn.className = 'btn1 btn-init';
+  document.body.appendChild( btn );
+  btn.addEventListener( 'click', init );
+}
+
+function init() {
+  const intitialPrompt = 'Please make your responses brief and refrain from explaining your limitations.';
+  const form = document.querySelector( 'form' );
+  if( form ){
+    const msgTxtArea = form.querySelector( 'textarea' );
+    if( msgTxtArea ){
+      msgTxtArea.value = intitialPrompt;
+      msgTxtArea.dispatchEvent( new Event( 'input', { bubbles: true } ) );
+    } else {
+      window.requestAnimationFrame( init );
+    }
+  }
 }
 
 // callback function to execute when mutations are observed
@@ -220,12 +242,17 @@ function mutated( mutationsList, observer ) {
         // console.log( 'A child node has been added or removed.' );
         if( hasConvo() ){
           observer.disconnect();
-          addBtn();
+          addBtnConvo();
         }
         break;
     }
   }
 }
 
+function domReady() {
+  addBtnInit();
+  observer.observe(document.querySelector( 'body' ), mutationObserverConfig)
+}
+
 // start observing the target node for configured mutations
-whenDOMready( () => observer.observe(document.querySelector( 'body' ), mutationObserverConfig) );
+whenDOMready( domReady  );
