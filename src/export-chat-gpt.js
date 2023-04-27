@@ -29,10 +29,10 @@ const htmlBlocks = [
             font-weight : bold;
         }
         .prompt {
-            margin-left : 15px;
+            padding-left : 5px;
         }
         .response {
-            margin-left : 15px;
+            padding-left : 5px;
         }
         .btn-copy {
         	position : absolute;
@@ -162,9 +162,9 @@ function convoToHTML( msgs ){
   let convo = '';
   for( i=0; i<msgs.length; i++ ){
     if( i%2 === 0 ){
-      convo += '<p class="who me">me :</p>\n' + '<p class="prompt">' + msgs[ i ] + '</p>\n';
+      convo += '<p style="font-weight:bold" class="who me">me :</p>\n' + '><span class="prompt">' + msgs[ i ] + '</span><br/>\n';
     } else {
-      convo += '<p class="who ai">ChatGPT:</p>\n' + '<div class="response">' + msgs[ i ] + '</div>\n';
+      convo += '<p style="font-weight:bold" class="who ai">ChatGPT:</p>\n' + '><span class="response">' + msgs[ i ] + '</span><br/>\n';
     }
   }
   return htmlBlocks[0] + convo + htmlBlocks[1];
@@ -179,7 +179,6 @@ function convoToJSON( msgs ){
           from : 'me',
           msg : msg
         };
-        break;
       default : // response
         return {
           from : 'chatGPT',
@@ -197,7 +196,7 @@ function hasBtnConvo() {
 function addBtnConvo() {
   hasBtnConvo() && removeBtnConvo();
   const btn = document.createElement( 'div' );
-  btn.innerHTML = 'export convo';
+  btn.innerHTML = 'export';
   btn.className = 'btn1 btn-get-convo';
   document.body.appendChild( btn );
   btn.addEventListener( 'click', getConvo );
