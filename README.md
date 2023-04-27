@@ -4,11 +4,12 @@ Used in conjunction with an extension for Chrome this bit of code enables you to
 ## How To Use
 1. Install the Chrome extension [User JavaScript and CSS](https://chrome.google.com/webstore/detail/user-javascript-and-css/nbhcbdghjpllgmfilhnhkllmkecfmpld)
 2. Navigate to the [ChatGPT website](https://chat.openai.com/chat/)
-3. Click the extension icon and paste the contents of :
+3. Click the extension icon 
+4. Click the URL and paste the contents of :
  * `src/export-chat-gpt.js` into the JS pane on the left
  * `src/export-chat-gpt.css` into the CSS pane on the right
-4. Click the "Save" button
-5. Refresh the ChatGPT page - et voila!
+5. Click the "Save" button
+6. Refresh the ChatGPT page - et voila!
 
 The rest should be self-explanatory, but if not please log a bug on github.
 
