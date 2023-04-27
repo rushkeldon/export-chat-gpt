@@ -22,6 +22,9 @@ const htmlBlocks = [
             scroll-behavior: smooth;
             outline : none !important;
         }
+        .indent {
+        	color : #E4E6EB;
+        }
         pre {
         	font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;	
         }
@@ -158,13 +161,14 @@ function getConvo() {
 }
 
 function convoToHTML( msgs ){
+  const indent = `<span class="indent">></span>`;
   if( !msgs || !msgs.length ) return alert( 'no conversation loaded at this time' );
   let convo = '';
   for( i=0; i<msgs.length; i++ ){
     if( i%2 === 0 ){
-      convo += '<p style="font-weight:bold" class="who me">me :</p>\n' + '><span class="prompt">' + msgs[ i ] + '</span><br/>\n';
+      convo += `<p style="font-weight:bold" class="who me">me :</p>\n${indent}<span class="prompt">${msgs[ i ]}</span><br/>\n`;
     } else {
-      convo += '<p style="font-weight:bold" class="who ai">ChatGPT:</p>\n' + '><span class="response">' + msgs[ i ] + '</span><br/>\n';
+      convo += `<p style="font-weight:bold" class="who ai">ChatGPT:</p>\n${indent}<span class="response">${msgs[ i ]}</span><br/>\n`;
     }
   }
   return htmlBlocks[0] + convo + htmlBlocks[1];
